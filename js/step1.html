@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Platformer</title>
+</head>
+<body>
+<canvas id="canvas" width="720" height="480"></canvas>
+<script language="javascript">
+
+function draw_rect(ctx, x, y, width, height, color) {
+    ctx.fillStyle = color;
+    ctx.fillRect(x, y, width, height);
+}
+
+function update(evt) {
+    requestAnimationFrame(update);
+    draw_rect(ctx, 0, 0, canvas.width, canvas.height, '#ccc');
+    draw_rect(ctx, body.x, body.y, body.w, body.h, '#000');
+    body.y += body.speed_y;
+    body.speed_y += gravity;
+    if (body.speed_y > 25) {
+        body.speed_y = 25;
+    }
+    if (body.y >= canvas.height) {
+        body.y = 0;
+    }
+}
+
+var canvas = document.getElementById('canvas');
+var ctx = canvas.getContext('2d');
+var width = canvas.width;
+var height = canvas.height;
+var body = {
+    x:100,
+    y:100,
+    w:16,
+    h:16,
+    speed_x:0,
+    speed_y:0
+};
+var gravity = 0.1;
+
+update(null);
+</script>
+</body>
+</html>

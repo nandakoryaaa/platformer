@@ -1,0 +1,1 @@
+g++ src/platformer.c -lSDL2main -lSDL2
